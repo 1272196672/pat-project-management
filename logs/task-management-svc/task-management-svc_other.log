@@ -1,0 +1,319 @@
+2023-02-20 10:12:51.283 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.event.slf4j.Slf4jLogger.invoke0:-2 -Slf4jLogger started
+2023-02-20 10:12:51.580 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.ArteryTransport.$anonfun$applyOrElse$3:98 -Remoting started with transport [Artery tcp]; listening on address [akka://task-management-svc@localhost:2551] with UID [-116711212436949740]
+2023-02-20 10:12:51.605 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Starting up, Akka version [2.7.0] ...
+2023-02-20 10:12:51.769 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Registered cluster JMX MBean [akka:type=Cluster]
+2023-02-20 10:12:51.769 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Started up successfully
+2023-02-20 10:12:51.796 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2023-02-20 10:12:52.445 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.actor.CoordinatedShutdown.$anonfun$applyOrElse$3:98 -Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2023-02-20 10:12:52.450 ERROR [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.Encoder.$anonfun$applyOrElse$1:79 -Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+java.lang.ClassNotFoundException: com.pat.quote.model.CborSerializable
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$getClassFor$1(ReflectiveDynamicAccess.scala:29)
+	at scala.util.Try$.apply(Try.scala:210)
+	at akka.actor.ReflectiveDynamicAccess.getClassFor(ReflectiveDynamicAccess.scala:28)
+	at akka.serialization.Serialization.$anonfun$bindings$3(Serialization.scala:438)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2360)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2182)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2158)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:436)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1165)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1208)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:1895)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1202)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1221)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1042)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1052)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at com.pat.task.TaskApp$.delayedEndpoint$com$pat$task$TaskApp$1(TaskApp.scala:7)
+	at com.pat.task.TaskApp$delayedInit$body.apply(TaskApp.scala:6)
+	at scala.Function0.apply$mcV$sp(Function0.scala:42)
+	at scala.Function0.apply$mcV$sp$(Function0.scala:42)
+	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)
+	at scala.App.$anonfun$main$1(App.scala:98)
+	at scala.App.$anonfun$main$1$adapted(App.scala:98)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:575)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:573)
+	at scala.collection.AbstractIterable.foreach(Iterable.scala:933)
+	at scala.App.main(App.scala:98)
+	at scala.App.main$(App.scala:96)
+	at com.pat.task.TaskApp$.main(TaskApp.scala:6)
+	at com.pat.task.TaskApp.main(TaskApp.scala)
+2023-02-20 10:12:52.452 ERROR [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.Encoder.$anonfun$applyOrElse$1:79 -Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+java.lang.ClassNotFoundException: com.pat.quote.model.CborSerializable
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$getClassFor$1(ReflectiveDynamicAccess.scala:29)
+	at scala.util.Try$.apply(Try.scala:210)
+	at akka.actor.ReflectiveDynamicAccess.getClassFor(ReflectiveDynamicAccess.scala:28)
+	at akka.serialization.Serialization.$anonfun$bindings$3(Serialization.scala:438)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2360)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2182)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2158)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:436)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1165)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1208)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:1895)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1202)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1221)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1042)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1052)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at com.pat.task.TaskApp$.delayedEndpoint$com$pat$task$TaskApp$1(TaskApp.scala:7)
+	at com.pat.task.TaskApp$delayedInit$body.apply(TaskApp.scala:6)
+	at scala.Function0.apply$mcV$sp(Function0.scala:42)
+	at scala.Function0.apply$mcV$sp$(Function0.scala:42)
+	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)
+	at scala.App.$anonfun$main$1(App.scala:98)
+	at scala.App.$anonfun$main$1$adapted(App.scala:98)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:575)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:573)
+	at scala.collection.AbstractIterable.foreach(Iterable.scala:933)
+	at scala.App.main(App.scala:98)
+	at scala.App.main$(App.scala:96)
+	at com.pat.task.TaskApp$.main(TaskApp.scala:6)
+	at com.pat.task.TaskApp.main(TaskApp.scala)
+2023-02-20 10:12:52.459 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Exiting completed
+2023-02-20 10:12:52.461 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Shutting down...
+2023-02-20 10:12:52.463 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Successfully shut down
+2023-02-20 10:12:52.483 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Shutting down remote daemon.
+2023-02-20 10:12:52.484 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remote daemon shut down; proceeding with flushing remote transports.
+2023-02-20 10:12:52.518 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remoting shut down.
+2023-02-20 10:12:53.686 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.event.slf4j.Slf4jLogger.invoke0:-2 -Slf4jLogger started
+2023-02-20 10:12:53.972 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.ArteryTransport.$anonfun$applyOrElse$3:98 -Remoting started with transport [Artery tcp]; listening on address [akka://task-management-svc@localhost:2552] with UID [-332111903147520068]
+2023-02-20 10:12:53.993 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Starting up, Akka version [2.7.0] ...
+2023-02-20 10:12:54.139 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Registered cluster JMX MBean [akka:type=Cluster]
+2023-02-20 10:12:54.139 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Started up successfully
+2023-02-20 10:12:54.183 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2023-02-20 10:12:54.726 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.actor.CoordinatedShutdown.$anonfun$applyOrElse$3:98 -Running CoordinatedShutdown with reason [ActorSystemTerminateReason]
+2023-02-20 10:12:54.731 ERROR [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.Encoder.$anonfun$applyOrElse$1:79 -Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+java.lang.ClassNotFoundException: com.pat.quote.model.CborSerializable
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$getClassFor$1(ReflectiveDynamicAccess.scala:29)
+	at scala.util.Try$.apply(Try.scala:210)
+	at akka.actor.ReflectiveDynamicAccess.getClassFor(ReflectiveDynamicAccess.scala:28)
+	at akka.serialization.Serialization.$anonfun$bindings$3(Serialization.scala:438)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2360)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2182)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2158)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:436)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1165)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1208)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:1895)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1202)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1221)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1042)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1052)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at com.pat.task.TaskApp2$.delayedEndpoint$com$pat$task$TaskApp2$1(TaskApp.scala:11)
+	at com.pat.task.TaskApp2$delayedInit$body.apply(TaskApp.scala:10)
+	at scala.Function0.apply$mcV$sp(Function0.scala:42)
+	at scala.Function0.apply$mcV$sp$(Function0.scala:42)
+	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)
+	at scala.App.$anonfun$main$1(App.scala:98)
+	at scala.App.$anonfun$main$1$adapted(App.scala:98)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:575)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:573)
+	at scala.collection.AbstractIterable.foreach(Iterable.scala:933)
+	at scala.App.main(App.scala:98)
+	at scala.App.main$(App.scala:96)
+	at com.pat.task.TaskApp2$.main(TaskApp.scala:10)
+	at com.pat.task.TaskApp2.main(TaskApp.scala)
+2023-02-20 10:12:54.732 ERROR [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.Encoder.$anonfun$applyOrElse$1:79 -Failed to serialize message [akka.remote.artery.OutboundHandshake$HandshakeReq].
+java.lang.ClassNotFoundException: com.pat.quote.model.CborSerializable
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:398)
+	at akka.actor.ReflectiveDynamicAccess.$anonfun$getClassFor$1(ReflectiveDynamicAccess.scala:29)
+	at scala.util.Try$.apply(Try.scala:210)
+	at akka.actor.ReflectiveDynamicAccess.getClassFor(ReflectiveDynamicAccess.scala:28)
+	at akka.serialization.Serialization.$anonfun$bindings$3(Serialization.scala:438)
+	at scala.collection.Iterator$$anon$9.next(Iterator.scala:584)
+	at scala.collection.immutable.HashMapBuilder.addAll(HashMap.scala:2360)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2182)
+	at scala.collection.immutable.HashMap$.from(HashMap.scala:2158)
+	at scala.collection.MapOps$WithFilter.map(Map.scala:381)
+	at akka.serialization.Serialization.<init>(Serialization.scala:436)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:18)
+	at akka.serialization.SerializationExtension$.createExtension(SerializationExtension.scala:14)
+	at akka.actor.ActorSystemImpl.registerExtension(ActorSystem.scala:1165)
+	at akka.actor.ActorSystemImpl.$anonfun$loadExtensions$1(ActorSystem.scala:1208)
+	at scala.collection.immutable.Vector.foreach(Vector.scala:1895)
+	at akka.actor.ActorSystemImpl.loadExtensions$1(ActorSystem.scala:1202)
+	at akka.actor.ActorSystemImpl.loadExtensions(ActorSystem.scala:1221)
+	at akka.actor.ActorSystemImpl.liftedTree2$1(ActorSystem.scala:1042)
+	at akka.actor.ActorSystemImpl._start$lzycompute(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl._start(ActorSystem.scala:1029)
+	at akka.actor.ActorSystemImpl.start(ActorSystem.scala:1052)
+	at akka.actor.typed.ActorSystem$.createInternal(ActorSystem.scala:290)
+	at akka.actor.typed.ActorSystem$.apply(ActorSystem.scala:204)
+	at com.pat.task.TaskApp2$.delayedEndpoint$com$pat$task$TaskApp2$1(TaskApp.scala:11)
+	at com.pat.task.TaskApp2$delayedInit$body.apply(TaskApp.scala:10)
+	at scala.Function0.apply$mcV$sp(Function0.scala:42)
+	at scala.Function0.apply$mcV$sp$(Function0.scala:42)
+	at scala.runtime.AbstractFunction0.apply$mcV$sp(AbstractFunction0.scala:17)
+	at scala.App.$anonfun$main$1(App.scala:98)
+	at scala.App.$anonfun$main$1$adapted(App.scala:98)
+	at scala.collection.IterableOnceOps.foreach(IterableOnce.scala:575)
+	at scala.collection.IterableOnceOps.foreach$(IterableOnce.scala:573)
+	at scala.collection.AbstractIterable.foreach(Iterable.scala:933)
+	at scala.App.main(App.scala:98)
+	at scala.App.main$(App.scala:96)
+	at com.pat.task.TaskApp2$.main(TaskApp.scala:10)
+	at com.pat.task.TaskApp2.main(TaskApp.scala)
+2023-02-20 10:12:54.737 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Exiting completed
+2023-02-20 10:12:54.737 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Shutting down...
+2023-02-20 10:12:54.738 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Successfully shut down
+2023-02-20 10:12:54.750 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Shutting down remote daemon.
+2023-02-20 10:12:54.751 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remote daemon shut down; proceeding with flushing remote transports.
+2023-02-20 10:12:54.776 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remoting shut down.
+2023-02-20 10:15:07.458 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.event.slf4j.Slf4jLogger.invoke0:-2 -Slf4jLogger started
+2023-02-20 10:15:07.760 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.ArteryTransport.$anonfun$applyOrElse$3:98 -Remoting started with transport [Artery tcp]; listening on address [akka://task-management-svc@localhost:2551] with UID [2719237728375460484]
+2023-02-20 10:15:07.783 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Starting up, Akka version [2.7.0] ...
+2023-02-20 10:15:07.948 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Registered cluster JMX MBean [akka:type=Cluster]
+2023-02-20 10:15:07.948 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Started up successfully
+2023-02-20 10:15:07.975 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2023-02-20 10:15:08.823 WARN  [task-management-svc-akka.actor.default-dispatcher-29] akka.stream.Materializer.$anonfun$applyOrElse$2:92 -[outbound connection to [akka://task-management-svc@localhost:2552], control stream] Upstream failed, cause: StreamTcpException: Tcp command [Connect(localhost:2552,None,List(),Some(5000 milliseconds),true)] failed because of java.net.ConnectException: Connection refused: no further information
+2023-02-20 10:15:08.824 WARN  [task-management-svc-akka.actor.default-dispatcher-29] akka.stream.Materializer.$anonfun$applyOrElse$2:92 -[outbound connection to [akka://task-management-svc@localhost:2552], message stream] Upstream failed, cause: StreamTcpException: Tcp command [Connect(localhost:2552,None,List(),Some(5000 milliseconds),true)] failed because of java.net.ConnectException: Connection refused: no further information
+2023-02-20 10:15:08.832 DEBUG [task-management-svc-akka.actor.default-dispatcher-18] akka.persistence.typed.internal.EventSourcedBehaviorImpl.becomeReplaying:74 -Initializing snapshot recovery: Recovery(SnapshotSelectionCriteria(9223372036854775807,9223372036854775807,0,0),9223372036854775807,9223372036854775807)
+2023-02-20 10:15:08.832 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.becomeReplaying:74 -Initializing snapshot recovery: Recovery(SnapshotSelectionCriteria(9223372036854775807,9223372036854775807,0,0),9223372036854775807,9223372036854775807)
+2023-02-20 10:15:08.856 DEBUG [task-management-svc-akka.actor.default-dispatcher-18] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Snapshot recovered from 0 Map() VersionVector()
+2023-02-20 10:15:08.856 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Snapshot recovered from 0 Map() VersionVector()
+2023-02-20 10:15:08.863 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Replaying events: from: 1, to: 9223372036854775807
+2023-02-20 10:15:08.863 DEBUG [task-management-svc-akka.actor.default-dispatcher-18] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Replaying events: from: 1, to: 9223372036854775807
+2023-02-20 10:15:08.876 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.onJournalResponse:186 -Recovery successful, recovered until sequenceNr: [0]
+2023-02-20 10:15:08.876 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.onJournalResponse:186 -Recovery successful, recovered until sequenceNr: [0]
+2023-02-20 10:15:08.876 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.tryReturnRecoveryPermit:149 -Returning recovery permit, reason: replay completed successfully
+2023-02-20 10:15:08.876 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.tryReturnRecoveryPermit:149 -Returning recovery permit, reason: replay completed successfully
+2023-02-20 10:15:08.882 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Recovery for persistenceId [PersistenceId(TesterTaskActor|3315213b71db46338eb34a3af5b334ba)] took 20.14 ms
+2023-02-20 10:15:08.882 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Recovery for persistenceId [PersistenceId(DeveloperTaskActor|9732062a3c884c649338a64c8a677e3e)] took 20.14 ms
+2023-02-20 10:15:09.490 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.actor.typed.ActorSystem.$anonfun$start$2:22 -WebServer at http://127.0.0.1:8421
+2023-02-20 10:15:09.512 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.management.internal.HealthChecksImpl.$anonfun$applyOrElse$3:98 -Loading readiness checks [(cluster-membership,akka.management.cluster.scaladsl.ClusterMembershipCheck), (sharding,akka.cluster.sharding.ClusterShardingHealthCheck)]
+2023-02-20 10:15:09.512 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.management.internal.HealthChecksImpl.$anonfun$applyOrElse$3:98 -Loading liveness checks []
+2023-02-20 10:15:09.529 INFO  [task-management-svc-akka.actor.default-dispatcher-33] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Binding Akka Management (HTTP) endpoint to: localhost:8551
+2023-02-20 10:15:09.530 INFO  [task-management-svc-akka.actor.default-dispatcher-33] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Including HTTP management routes for ClusterHttpManagementRouteProvider
+2023-02-20 10:15:09.573 INFO  [task-management-svc-akka.actor.default-dispatcher-33] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Including HTTP management routes for ClusterBootstrap
+2023-02-20 10:15:09.576 INFO  [task-management-svc-akka.actor.default-dispatcher-33] akka.management.cluster.bootstrap.ClusterBootstrap.$anonfun$applyOrElse$3:98 -Using self contact point address: http://localhost:8551
+2023-02-20 10:15:09.586 INFO  [task-management-svc-akka.actor.default-dispatcher-33] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Including HTTP management routes for HealthCheckRoutes
+2023-02-20 10:15:09.589 WARN  [task-management-svc-akka.actor.default-dispatcher-33] akka.actor.ActorSystemImpl.$anonfun$applyOrElse$2:92 -Binding with a connection source not supported with HTTP/2. Falling back to HTTP/1.1 for port [8551].
+2023-02-20 10:15:09.730 WARN  [task-management-svc-akka.actor.default-dispatcher-27] akka.management.cluster.bootstrap.ClusterBootstrap.$anonfun$applyOrElse$2:92 -Application is configured with specific `akka.cluster.seed-nodes`: [akka://task-management-svc@localhost:2551, akka://task-management-svc@localhost:2552], bailing out of the bootstrap process! If you want to use the automatic bootstrap mechanism, make sure to NOT set explicit seed nodes in the configuration. This node will attempt to join the configured seed nodes.
+2023-02-20 10:15:09.741 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Bound Akka Management (HTTP) endpoint to: localhost:8551
+2023-02-20 10:15:10.004 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.event.slf4j.Slf4jLogger.invoke0:-2 -Slf4jLogger started
+2023-02-20 10:15:10.279 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.remote.artery.ArteryTransport.$anonfun$applyOrElse$3:98 -Remoting started with transport [Artery tcp]; listening on address [akka://task-management-svc@localhost:2552] with UID [7951808220268126642]
+2023-02-20 10:15:10.300 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Starting up, Akka version [2.7.0] ...
+2023-02-20 10:15:10.444 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Registered cluster JMX MBean [akka:type=Cluster]
+2023-02-20 10:15:10.444 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Started up successfully
+2023-02-20 10:15:10.470 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - No downing-provider-class configured, manual cluster downing required, see https://doc.akka.io/docs/akka/current/typed/cluster.html#downing
+2023-02-20 10:15:11.177 DEBUG [task-management-svc-akka.actor.default-dispatcher-18] akka.persistence.typed.internal.EventSourcedBehaviorImpl.becomeReplaying:74 -Initializing snapshot recovery: Recovery(SnapshotSelectionCriteria(9223372036854775807,9223372036854775807,0,0),9223372036854775807,9223372036854775807)
+2023-02-20 10:15:11.177 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.becomeReplaying:74 -Initializing snapshot recovery: Recovery(SnapshotSelectionCriteria(9223372036854775807,9223372036854775807,0,0),9223372036854775807,9223372036854775807)
+2023-02-20 10:15:11.202 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Snapshot recovered from 0 Map() VersionVector()
+2023-02-20 10:15:11.202 DEBUG [task-management-svc-akka.actor.default-dispatcher-18] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Snapshot recovered from 0 Map() VersionVector()
+2023-02-20 10:15:11.210 DEBUG [task-management-svc-akka.actor.default-dispatcher-5] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Replaying events: from: 1, to: 9223372036854775807
+2023-02-20 10:15:11.210 DEBUG [task-management-svc-akka.actor.default-dispatcher-18] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Replaying events: from: 1, to: 9223372036854775807
+2023-02-20 10:15:11.219 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.onJournalResponse:186 -Recovery successful, recovered until sequenceNr: [0]
+2023-02-20 10:15:11.219 DEBUG [task-management-svc-akka.actor.default-dispatcher-26] akka.persistence.typed.internal.EventSourcedBehaviorImpl.onJournalResponse:186 -Recovery successful, recovered until sequenceNr: [0]
+2023-02-20 10:15:11.219 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.tryReturnRecoveryPermit:149 -Returning recovery permit, reason: replay completed successfully
+2023-02-20 10:15:11.219 DEBUG [task-management-svc-akka.actor.default-dispatcher-26] akka.persistence.typed.internal.EventSourcedBehaviorImpl.tryReturnRecoveryPermit:149 -Returning recovery permit, reason: replay completed successfully
+2023-02-20 10:15:11.225 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Recovery for persistenceId [PersistenceId(TesterTaskActor|6fa37190c0d44ef5a470725ff005da0f)] took 16.37 ms
+2023-02-20 10:15:11.225 DEBUG [task-management-svc-akka.actor.default-dispatcher-26] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Recovery for persistenceId [PersistenceId(DeveloperTaskActor|30c4335aa9d043a08af3be367ca00d67)] took 16.37 ms
+2023-02-20 10:15:11.634 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.actor.typed.ActorSystem.$anonfun$start$2:22 -WebServer at http://127.0.0.1:8422
+2023-02-20 10:15:11.648 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.management.internal.HealthChecksImpl.$anonfun$applyOrElse$3:98 -Loading readiness checks [(cluster-membership,akka.management.cluster.scaladsl.ClusterMembershipCheck), (sharding,akka.cluster.sharding.ClusterShardingHealthCheck)]
+2023-02-20 10:15:11.648 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.management.internal.HealthChecksImpl.$anonfun$applyOrElse$3:98 -Loading liveness checks []
+2023-02-20 10:15:11.663 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Binding Akka Management (HTTP) endpoint to: localhost:8552
+2023-02-20 10:15:11.664 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Including HTTP management routes for ClusterHttpManagementRouteProvider
+2023-02-20 10:15:11.697 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Including HTTP management routes for ClusterBootstrap
+2023-02-20 10:15:11.700 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.management.cluster.bootstrap.ClusterBootstrap.$anonfun$applyOrElse$3:98 -Using self contact point address: http://localhost:8552
+2023-02-20 10:15:11.708 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Including HTTP management routes for HealthCheckRoutes
+2023-02-20 10:15:11.712 WARN  [task-management-svc-akka.actor.default-dispatcher-26] akka.actor.ActorSystemImpl.$anonfun$applyOrElse$2:92 -Binding with a connection source not supported with HTTP/2. Falling back to HTTP/1.1 for port [8552].
+2023-02-20 10:15:11.826 WARN  [task-management-svc-akka.actor.default-dispatcher-33] akka.management.cluster.bootstrap.ClusterBootstrap.$anonfun$applyOrElse$2:92 -Application is configured with specific `akka.cluster.seed-nodes`: [akka://task-management-svc@localhost:2551, akka://task-management-svc@localhost:2552], bailing out of the bootstrap process! If you want to use the automatic bootstrap mechanism, make sure to NOT set explicit seed nodes in the configuration. This node will attempt to join the configured seed nodes.
+2023-02-20 10:15:11.832 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.management.scaladsl.AkkaManagement.$anonfun$applyOrElse$3:98 -Bound Akka Management (HTTP) endpoint to: localhost:8552
+2023-02-20 10:15:12.055 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Received InitJoin message from [Actor[akka://task-management-svc@localhost:2551/system/cluster/core/daemon/firstSeedNodeProcess-1#223448081]], but this node is not initialized yet
+2023-02-20 10:15:12.056 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Received InitJoin message from [Actor[akka://task-management-svc@localhost:2551/system/cluster/core/daemon/firstSeedNodeProcess-1#223448081]], but this node is not initialized yet
+2023-02-20 10:15:12.056 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Received InitJoin message from [Actor[akka://task-management-svc@localhost:2551/system/cluster/core/daemon/firstSeedNodeProcess-1#223448081]], but this node is not initialized yet
+2023-02-20 10:15:12.056 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Received InitJoin message from [Actor[akka://task-management-svc@localhost:2551/system/cluster/core/daemon/firstSeedNodeProcess-1#223448081]], but this node is not initialized yet
+2023-02-20 10:15:12.065 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Received InitJoin message from [Actor[akka://task-management-svc@localhost:2552/system/cluster/core/daemon/joinSeedNodeProcess-1#-1659275539]], but this node is not initialized yet
+2023-02-20 10:15:12.065 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Received InitJoinNack message from [Actor[akka://task-management-svc@localhost:2552/system/cluster/core/daemon#-894462188]] to [akka://task-management-svc@localhost:2551]
+2023-02-20 10:15:12.071 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Received InitJoin message from [Actor[akka://task-management-svc@localhost:2551/system/cluster/core/daemon/firstSeedNodeProcess-1#223448081]], but this node is not initialized yet
+2023-02-20 10:15:12.076 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Node [akka://task-management-svc@localhost:2551] is JOINING itself (with roles [dc-default], version [0.0.0]) and forming new cluster
+2023-02-20 10:15:12.078 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - is the new leader among reachable nodes (more leaders may exist)
+2023-02-20 10:15:12.083 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Leader is moving node [akka://task-management-svc@localhost:2551] to [Up]
+2023-02-20 10:15:17.089 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Received InitJoin message from [Actor[akka://task-management-svc@localhost:2552/system/cluster/core/daemon/joinSeedNodeProcess-1#-1659275539]] to [akka://task-management-svc@localhost:2551]
+2023-02-20 10:15:17.089 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Sending InitJoinAck message from node [akka://task-management-svc@localhost:2551] to [Actor[akka://task-management-svc@localhost:2552/system/cluster/core/daemon/joinSeedNodeProcess-1#-1659275539]] (version [2.7.0])
+2023-02-20 10:15:17.150 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Received InitJoinAck message from [Actor[akka://task-management-svc@localhost:2551/system/cluster/core/daemon#924813447]] to [akka://task-management-svc@localhost:2552]
+2023-02-20 10:15:17.183 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Node [akka://task-management-svc@localhost:2552] is JOINING, roles [dc-default], version [0.0.0]
+2023-02-20 10:15:17.187 DEBUG [task-management-svc-akka.actor.internal-dispatcher-19] a.c.typed.internal.receptionist.ClusterReceptionist.debug2$extension:114 -ClusterReceptionist [akka://task-management-svc@localhost:2551] - Node added [UniqueAddress(akka://task-management-svc@localhost:2552,7951808220268126642)]
+2023-02-20 10:15:17.246 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Welcome from [akka://task-management-svc@localhost:2551]
+2023-02-20 10:15:17.257 DEBUG [task-management-svc-akka.actor.internal-dispatcher-20] a.c.typed.internal.receptionist.ClusterReceptionist.debug2$extension:114 -ClusterReceptionist [akka://task-management-svc@localhost:2552] - Node added [UniqueAddress(akka://task-management-svc@localhost:2551,2719237728375460484)]
+2023-02-20 10:15:18.133 INFO  [task-management-svc-akka.actor.default-dispatcher-33] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Leader is moving node [akka://task-management-svc@localhost:2552] to [Up]
+2023-02-20 10:15:30.002 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.ShowProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:33.417 DEBUG [task-management-svc-akka.actor.default-dispatcher-3] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.UpdateProgressCommand], resulting effect: [Persist(com.pat.task.model.TaskCompletedEvent)], side effects: [1]
+2023-02-20 10:15:33.473 DEBUG [task-management-svc-akka.actor.default-dispatcher-3] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Received Journal response: WriteMessagesSuccessful after: 52230800 nanos
+2023-02-20 10:15:33.476 DEBUG [task-management-svc-akka.actor.default-dispatcher-3] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Received Journal response: WriteMessageSuccess(PersistentRepr(DeveloperTaskActor|9732062a3c884c649338a64c8a677e3e,1,e190fc7f-1449-48f4-a0a1-6b01270bb0f5,0,None),2) after: 54946100 nanos
+2023-02-20 10:15:35.956 DEBUG [task-management-svc-akka.actor.default-dispatcher-33] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.ShowProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:38.499 DEBUG [task-management-svc-akka.actor.default-dispatcher-33] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.Send2TestCommand], resulting effect: [Persist(com.pat.task.model.Sent2TestEvent)], side effects: [1]
+2023-02-20 10:15:38.505 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Received Journal response: WriteMessagesSuccessful after: 6304000 nanos
+2023-02-20 10:15:38.505 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Received Journal response: WriteMessageSuccess(PersistentRepr(DeveloperTaskActor|9732062a3c884c649338a64c8a677e3e,2,e190fc7f-1449-48f4-a0a1-6b01270bb0f5,0,None),2) after: 6579600 nanos
+2023-02-20 10:15:38.508 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.ReceiveFromDevCommand], resulting effect: [Persist(com.pat.task.model.ReceiveFromDevEvent)], side effects: [1]
+2023-02-20 10:15:38.515 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Received Journal response: WriteMessagesSuccessful after: 7258200 nanos
+2023-02-20 10:15:38.515 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debug2$extension:114 -Received Journal response: WriteMessageSuccess(PersistentRepr(TesterTaskActor|3315213b71db46338eb34a3af5b334ba,1,5f28ec1c-f684-478c-81b2-53843c5c581d,0,None),1) after: 7472100 nanos
+2023-02-20 10:15:41.323 DEBUG [task-management-svc-akka.actor.default-dispatcher-33] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.UpdateProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:43.015 DEBUG [task-management-svc-akka.actor.default-dispatcher-33] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.ShowProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:45.534 DEBUG [task-management-svc-akka.actor.default-dispatcher-33] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.ShowProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:49.292 DEBUG [task-management-svc-akka.actor.default-dispatcher-33] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.ShowProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:52.984 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.ShowProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:54.343 DEBUG [task-management-svc-akka.actor.default-dispatcher-33] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.Send2TestCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:15:57.349 DEBUG [task-management-svc-akka.actor.default-dispatcher-27] akka.persistence.typed.internal.EventSourcedBehaviorImpl.debugN$extension:147 -Handled command [com.pat.task.model.UpdateProgressCommand], resulting effect: [PersistNothing], side effects: [0]
+2023-02-20 10:16:32.501 INFO  [task-management-svc-akka.actor.default-dispatcher-33] akka.actor.CoordinatedShutdown.$anonfun$applyOrElse$3:98 -Running CoordinatedShutdown with reason [JvmExitReason]
+2023-02-20 10:16:32.514 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Marked address [akka://task-management-svc@localhost:2551] as [Leaving]
+2023-02-20 10:16:32.535 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.actor.CoordinatedShutdown.$anonfun$applyOrElse$3:98 -Running CoordinatedShutdown with reason [JvmExitReason]
+2023-02-20 10:16:32.547 INFO  [task-management-svc-akka.actor.default-dispatcher-26] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Marked address [akka://task-management-svc@localhost:2552] as [Leaving]
+2023-02-20 10:16:33.404 INFO  [task-management-svc-akka.actor.default-dispatcher-18] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Leader is moving node [akka://task-management-svc@localhost:2551] to [Exiting]
+2023-02-20 10:16:33.404 INFO  [task-management-svc-akka.actor.default-dispatcher-18] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Leader is moving node [akka://task-management-svc@localhost:2552] to [Exiting]
+2023-02-20 10:16:33.406 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Exiting completed
+2023-02-20 10:16:33.408 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Shutting down...
+2023-02-20 10:16:33.409 INFO  [task-management-svc-akka.actor.default-dispatcher-27] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2551] - Successfully shut down
+2023-02-20 10:16:33.409 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Exiting confirmed [akka://task-management-svc@localhost:2551]
+2023-02-20 10:16:33.410 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Exiting completed
+2023-02-20 10:16:33.411 DEBUG [task-management-svc-akka.actor.internal-dispatcher-36] a.c.typed.internal.receptionist.ClusterReceptionist.onInternalCommand$1:508 -ClusterReceptionist [akka://task-management-svc@localhost:2551] - terminated/removed
+2023-02-20 10:16:33.412 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Shutting down...
+2023-02-20 10:16:33.412 INFO  [task-management-svc-akka.actor.default-dispatcher-3] akka.cluster.Cluster.$anonfun$applyOrElse$3:98 -Cluster Node [akka://task-management-svc@localhost:2552] - Successfully shut down
+2023-02-20 10:16:33.415 DEBUG [task-management-svc-akka.actor.internal-dispatcher-7] a.c.typed.internal.receptionist.ClusterReceptionist.onInternalCommand$1:508 -ClusterReceptionist [akka://task-management-svc@localhost:2552] - terminated/removed
+2023-02-20 10:16:33.418 INFO  [task-management-svc-akka.actor.default-dispatcher-18] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Shutting down remote daemon.
+2023-02-20 10:16:33.419 INFO  [task-management-svc-akka.actor.default-dispatcher-18] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remote daemon shut down; proceeding with flushing remote transports.
+2023-02-20 10:16:33.422 INFO  [task-management-svc-akka.actor.default-dispatcher-25] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Shutting down remote daemon.
+2023-02-20 10:16:33.423 INFO  [task-management-svc-akka.actor.default-dispatcher-25] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remote daemon shut down; proceeding with flushing remote transports.
+2023-02-20 10:16:33.437 INFO  [task-management-svc-akka.actor.default-dispatcher-18] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remoting shut down.
+2023-02-20 10:16:33.451 INFO  [task-management-svc-akka.actor.default-dispatcher-25] akka.remote.RemoteActorRefProvider$RemotingTerminator.$anonfun$applyOrElse$3:98 -Remoting shut down.
