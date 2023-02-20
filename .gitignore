@@ -5,5 +5,5 @@ task-management-svc/target/
 **.*.jar
 *.bak
 .DS_Store
-task-management-svc/*.log
+logs
 dependency-reduced-pom.xml
