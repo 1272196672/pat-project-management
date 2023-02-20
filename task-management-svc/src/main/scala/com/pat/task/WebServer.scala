@@ -19,7 +19,7 @@ object WebServer {
       .onComplete {
         case Success(binding) =>
           val address = binding.localAddress
-          system.log.info(s"WebServer at http://${address.getHostString}:${address.getPort}")
+          system.log.info(s"WebServer started at http://${address.getHostString}:${address.getPort}")
         case Failure(ex) =>
           system.log.error("Failed to bind HTTP endpoint, terminating system", ex)
           system.terminate()

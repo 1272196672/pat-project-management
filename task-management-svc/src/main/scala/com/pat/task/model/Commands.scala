@@ -5,7 +5,7 @@ import akka.actor.typed.ActorRef
 sealed trait Command extends CborSerializable
 
 // 用户登录命令
-final case class LoginCommand(replyTo: ActorRef[Response]) extends Command
+final case class LoginCommand(staffId: String, staffState: Int, replyTo: ActorRef[Response]) extends Command
 
 // 通用命令
 final case class ShowProgressCommand(replyTo: ActorRef[Response]) extends Command with TestCommand with DevCommand

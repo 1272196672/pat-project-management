@@ -12,15 +12,12 @@ import scala.language.postfixOps
 
 
 object TesterTaskActor {
-
-  val taskId: String = IdUtil.simpleUUID()
-
-  def apply(): Behavior[TestCommand] = {
+  def apply(staffId: String): Behavior[TestCommand] = {
     Behaviors.setup[TestCommand] { context =>
       EventSourcedBehavior[TestCommand, Event, State](
-        PersistenceId("TesterTaskActor", taskId),
-        State.test,
-        (state, command) => openTask(taskId, state, command),
+        PersistenceId("TesterTaskActor", staffId),
+        State.init(StaffState.TESTER, staffId),
+        (state, command) => openTask(staffId, state, command),
         (state, event) => handleEvent(state, event)
       )
         .withRetention(RetentionCriteria.snapshotEvery(numberOfEvents = 100, keepNSnapshots = 3))
@@ -28,11 +25,11 @@ object TesterTaskActor {
     }
   }
 
-  def openTask(taskId: String, state: State, command: TestCommand): Effect[Event, State] = {
+  def openTask(staffId: String, state: State, command: TestCommand): Effect[Event, State] = {
     command match {
       case ReceiveFromDevCommand(testerId, replyTo) =>
         Effect
-          .persist(ReceiveFromDevEvent(taskId, testerId))
+          .persist(ReceiveFromDevEvent(staffId, testerId))
           .thenRun(ref => replyTo ! SuccessResponse(ref.toSummary))
       case ShowProgressCommand(replyTo) =>
         replyTo ! SuccessResponse(state.toSummary)
@@ -42,7 +39,7 @@ object TesterTaskActor {
 
   def handleEvent(state: State, event: Event): State = {
     event match {
-      case ReceiveFromDevEvent(taskId, testerId) => state.updateProgress(0, TaskState.PROCESSING, testerId)
+      case ReceiveFromDevEvent(staffId, testerId) => state.updateProgress(0, TaskState.PROCESSING, testerId)
     }
   }
 }

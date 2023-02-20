@@ -26,3 +26,150 @@
 2023-02-20 10:16:33.416 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2552 after Exiting
 2023-02-20 10:16:33.417 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
 2023-02-20 10:16:33.417 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 10:35:57.459 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 10:35:59.712 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 10:36:00.886 DEBUG[task-management-svc-akka.actor.default-dispatcher-31]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 10:36:00.890 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 10:36:00.891 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 10:36:05.988 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberJoined(Member(akka://task-management-svc@localhost:2552, Joining))
+2023-02-20 10:36:06.076 DEBUG[task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 10:36:06.080 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberJoined(Member(akka://task-management-svc@localhost:2552, Joining))
+2023-02-20 10:36:06.088 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 10:36:06.090 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 10:36:06.904 DEBUG[task-management-svc-akka.actor.default-dispatcher-34]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2552
+2023-02-20 10:36:06.913 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2552
+2023-02-20 10:36:36.909 INFO [task-management-svc-akka.actor.default-dispatcher-34]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 10:36:36.913 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 10:36:37.404 INFO [task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 10:36:37.404 INFO [task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2552)
+2023-02-20 10:36:37.404 INFO [task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2552)
+2023-02-20 10:36:37.408 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 10:36:37.408 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2552)
+2023-02-20 10:36:37.409 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2552)
+2023-02-20 10:36:37.410 DEBUG[task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 10:36:37.412 DEBUG[task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2552 after Up
+2023-02-20 10:36:37.412 INFO [task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 10:36:37.412 INFO [task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 10:36:37.802 DEBUG[task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 14:08:58.997 INFO [task-management-svc-akka.actor.default-dispatcher-26]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2552, Leaving))
+2023-02-20 14:08:59.616 INFO [task-management-svc-akka.actor.default-dispatcher-41]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2552, Exiting))
+2023-02-20 14:08:59.620 DEBUG[task-management-svc-akka.actor.default-dispatcher-26]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2552 after Exiting
+2023-02-20 14:08:59.621 INFO [task-management-svc-akka.actor.default-dispatcher-26]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 14:08:59.621 INFO [task-management-svc-akka.actor.default-dispatcher-26]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 14:09:14.548 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 14:09:19.074 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 14:09:19.079 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:09:19.080 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:12:08.963 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 14:12:09.840 INFO [task-management-svc-akka.actor.default-dispatcher-33]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 14:12:09.845 DEBUG[task-management-svc-akka.actor.default-dispatcher-33]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 14:12:09.846 INFO [task-management-svc-akka.actor.default-dispatcher-33]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 14:12:09.846 INFO [task-management-svc-akka.actor.default-dispatcher-33]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 14:12:14.667 DEBUG[task-management-svc-akka.actor.default-dispatcher-19]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 14:12:19.147 DEBUG[task-management-svc-akka.actor.default-dispatcher-19]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 14:12:19.152 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:12:19.153 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:15:26.719 INFO [task-management-svc-akka.actor.default-dispatcher-19]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 14:15:27.203 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 14:15:27.209 DEBUG[task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 14:15:27.211 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 14:15:27.211 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 14:15:32.131 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 14:15:36.674 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 14:15:36.680 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:15:36.681 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:16:58.369 INFO [task-management-svc-akka.actor.default-dispatcher-19]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 14:16:59.032 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 14:16:59.037 DEBUG[task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 14:16:59.039 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 14:16:59.039 INFO [task-management-svc-akka.actor.default-dispatcher-35]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 14:18:20.182 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 14:18:24.694 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 14:18:24.700 INFO [task-management-svc-akka.actor.default-dispatcher-31]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:18:24.701 INFO [task-management-svc-akka.actor.default-dispatcher-31]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:20:59.179 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 14:20:59.423 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 14:20:59.429 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 14:20:59.430 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 14:20:59.430 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 14:21:05.075 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 14:21:09.559 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 14:21:09.564 INFO [task-management-svc-akka.actor.default-dispatcher-29]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 14:21:09.565 INFO [task-management-svc-akka.actor.default-dispatcher-29]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:16:28.854 INFO [task-management-svc-akka.actor.default-dispatcher-43]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:16:29.463 INFO [task-management-svc-akka.actor.default-dispatcher-46]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:16:29.468 DEBUG[task-management-svc-akka.actor.default-dispatcher-45]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:16:29.469 INFO [task-management-svc-akka.actor.default-dispatcher-45]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:16:29.470 INFO [task-management-svc-akka.actor.default-dispatcher-45]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:16:35.023 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:16:39.524 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:16:39.529 INFO [task-management-svc-akka.actor.default-dispatcher-30]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:16:39.530 INFO [task-management-svc-akka.actor.default-dispatcher-30]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:18:37.393 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:18:37.469 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:18:37.474 DEBUG[task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:18:37.476 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:18:37.477 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:18:42.733 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:18:47.258 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:18:47.263 INFO [task-management-svc-akka.actor.default-dispatcher-29]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:18:47.264 INFO [task-management-svc-akka.actor.default-dispatcher-29]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:19:39.635 INFO [task-management-svc-akka.actor.default-dispatcher-29]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:19:40.070 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:19:40.075 DEBUG[task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:19:40.076 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:19:40.076 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:19:44.905 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:19:49.387 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:19:49.392 INFO [task-management-svc-akka.actor.default-dispatcher-30]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:19:49.393 INFO [task-management-svc-akka.actor.default-dispatcher-30]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:21:24.718 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:21:25.051 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:21:25.055 DEBUG[task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:21:25.056 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:21:25.056 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:21:30.642 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:21:35.171 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:21:35.177 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:21:35.178 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:22:52.785 INFO [task-management-svc-akka.actor.default-dispatcher-5]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:22:53.477 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:22:53.482 DEBUG[task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:22:53.484 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:22:53.484 INFO [task-management-svc-akka.actor.default-dispatcher-36]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:22:58.120 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:23:02.656 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:23:02.662 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:23:02.663 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:23:12.457 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:23:12.838 INFO [task-management-svc-akka.actor.default-dispatcher-37]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:23:12.846 DEBUG[task-management-svc-akka.actor.default-dispatcher-37]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:23:12.848 INFO [task-management-svc-akka.actor.default-dispatcher-37]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:23:12.848 INFO [task-management-svc-akka.actor.default-dispatcher-37]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:23:18.403 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:23:22.713 DEBUG[task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:23:22.721 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:23:22.723 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:24:38.027 INFO [task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:24:38.818 INFO [task-management-svc-akka.actor.default-dispatcher-41]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:24:38.822 DEBUG[task-management-svc-akka.actor.default-dispatcher-41]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:24:38.824 INFO [task-management-svc-akka.actor.default-dispatcher-41]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:24:38.824 INFO [task-management-svc-akka.actor.default-dispatcher-41]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:24:48.522 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:24:53.084 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:24:53.090 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:24:53.091 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:25:57.551 INFO [task-management-svc-akka.actor.default-dispatcher-38]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:25:58.076 INFO [task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:25:58.081 DEBUG[task-management-svc-akka.actor.default-dispatcher-40]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:25:58.082 INFO [task-management-svc-akka.actor.default-dispatcher-40]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:25:58.082 INFO [task-management-svc-akka.actor.default-dispatcher-40]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None
+2023-02-20 15:26:53.421 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.$anonfun$listen$1:12 -starting up ChatClusterListener...
+2023-02-20 15:26:57.952 DEBUG[task-management-svc-akka.actor.default-dispatcher-18]com.pat.task.ClusterListener$.applyOrElse:20 -Member is Up: akka://task-management-svc@localhost:2551
+2023-02-20 15:26:57.959 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:26:57.961 INFO [task-management-svc-akka.actor.default-dispatcher-3]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default Some(akka://task-management-svc@localhost:2551)
+2023-02-20 15:27:55.716 INFO [task-management-svc-akka.actor.default-dispatcher-38]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberLeft(Member(akka://task-management-svc@localhost:2551, Leaving))
+2023-02-20 15:27:55.909 INFO [task-management-svc-akka.actor.default-dispatcher-39]com.pat.task.ClusterListener$.applyOrElse:35 -Member Event: MemberExited(Member(akka://task-management-svc@localhost:2551, Exiting))
+2023-02-20 15:27:55.914 DEBUG[task-management-svc-akka.actor.default-dispatcher-40]com.pat.task.ClusterListener$.applyOrElse:26 -Member is Removed: akka://task-management-svc@localhost:2551 after Exiting
+2023-02-20 15:27:55.916 INFO [task-management-svc-akka.actor.default-dispatcher-40]com.pat.task.ClusterListener$.applyOrElse:32 -Leader changed: None
+2023-02-20 15:27:55.916 INFO [task-management-svc-akka.actor.default-dispatcher-40]com.pat.task.ClusterListener$.applyOrElse:17 -HELLO BROTHER: dc-default None

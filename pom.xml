@@ -5,11 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pat</groupId>
-    <artifactId>project-management</artifactId>
+    <artifactId>pat-project-management</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-
         <module>task-management-svc</module>
     </modules>
 
@@ -129,11 +128,11 @@
             <version>7.3.1</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.github.dnvriend</groupId>-->
-<!--            <artifactId>akka-persistence-jdbc_${scala.compact.version}</artifactId>-->
-<!--            <version>3.5.3</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.dnvriend</groupId>-->
+        <!--            <artifactId>akka-persistence-jdbc_${scala.compact.version}</artifactId>-->
+        <!--            <version>3.5.3</version>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>com.lightbend.akka</groupId>
             <artifactId>akka-persistence-jdbc_${scala.compact.version}</artifactId>
@@ -236,11 +235,11 @@
             <version>4.3.0</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.github.pureconfig</groupId>-->
-<!--            <artifactId>pureconfig_${scala.compact.version}</artifactId>-->
-<!--            <version>0.14.0</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.github.pureconfig</groupId>-->
+        <!--            <artifactId>pureconfig_${scala.compact.version}</artifactId>-->
+        <!--            <version>0.14.0</version>-->
+        <!--        </dependency>-->
 
 
         <!--        <dependency>-->

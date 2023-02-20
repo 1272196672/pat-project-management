@@ -6,6 +6,8 @@ trait Entity extends CborSerializable
 
 final case class Summary(progress: Double, taskState: Int, doer: Int, handlerId: String) extends CborSerializable
 
+final case class StaffInfo(staffId: String, staffState: Int) extends CborSerializable
+
 final case class TaskEntity(id: Int,
                             projectId: String,
                             creatorId: String,

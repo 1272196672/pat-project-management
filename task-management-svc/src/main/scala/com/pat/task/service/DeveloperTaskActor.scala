@@ -13,16 +13,15 @@ import cn.hutool.core.util.IdUtil
 import scala.language.postfixOps
 
 object DeveloperTaskActor {
-  val taskId: String = IdUtil.simpleUUID()
-  def apply(): Behavior[DevCommand] = {
+  def apply(staffId: String): Behavior[DevCommand] = {
     Behaviors.setup[DevCommand] { context =>
       val scheduler: Scheduler = context.system.scheduler
       EventSourcedBehavior[DevCommand, Event, State](
-        PersistenceId("DeveloperTaskActor", taskId),
-        State.dev,
+        PersistenceId("DeveloperTaskActor", staffId),
+        State.init(StaffState.DEVELOPER, staffId),
         (state, command) =>
           if (state.taskState == TaskState.DELIVERED) haveNoRightToModify(state, command)
-          else openTask(taskId, state, command, scheduler),
+          else openTask(staffId, state, command, scheduler),
         (state, event) => handleEvent(state, event)
       )
         .withRetention(RetentionCriteria.snapshotEvery(numberOfEvents = 100, keepNSnapshots = 3))
@@ -33,7 +32,7 @@ object DeveloperTaskActor {
   implicit val timeout: Timeout = Timeout(2 seconds)
 
   // 接受命令，操作任务
-  private def openTask(taskId: String, state: State, command: DevCommand, scheduler: Scheduler): Effect[Event, State] = {
+  private def openTask(staffId: String, state: State, command: DevCommand, scheduler: Scheduler): Effect[Event, State] = {
 
     implicit val scheduler1: Scheduler = scheduler
 
@@ -42,16 +41,16 @@ object DeveloperTaskActor {
         Effect
           .persist(
             if (progress == 1)
-              TaskCompletedEvent(taskId, state.doer)
+              TaskCompletedEvent(staffId, state.doer)
             else
-              ProgressUpdatedEvent(taskId, progress, TaskState.PROCESSING, state.doer)
+              ProgressUpdatedEvent(staffId, progress, TaskState.PROCESSING, state.doer)
           )
           .thenRun(updateProgress => replyTo ! SuccessResponse(updateProgress.toSummary))
 
       case Send2TestCommand(testerId, replyTo, replyToTest) =>
         if (state.taskState == TaskState.COMPLETED) {
           Effect
-            .persist(Sent2TestEvent(taskId, testerId))
+            .persist(Sent2TestEvent(staffId, testerId))
             .thenRun(_ => replyToTest ! ReceiveFromDevCommand(testerId, replyTo))
           /*
           .thenRun(_ => {
@@ -98,11 +97,11 @@ object DeveloperTaskActor {
   // 处理事件
   private def handleEvent(state: State, event: Event): State = {
     event match {
-      case ProgressUpdatedEvent(taskId, progress, taskState, doer) => state.updateProgress(progress, taskState, state.handlerId)
+      case ProgressUpdatedEvent(staffId, progress, taskState, doer) => state.updateProgress(progress, taskState, state.handlerId)
 
-      case TaskCompletedEvent(taskId, doer) => state.completeTask
+      case TaskCompletedEvent(staffId, doer) => state.completeTask
 
-      case Sent2TestEvent(taskId, testerId) => state.deliverTask
+      case Sent2TestEvent(staffId, testerId) => state.deliverTask
     }
   }
 }

@@ -9,8 +9,7 @@ final case class State(progress: Double, taskState: Int, doer: Int, handlerId: S
 
 object State {
   val empty: State = State(progress = 0, taskState = 0, doer = 0, handlerId = "")
-  val dev: State = State(progress = 0, taskState = 0, doer = StaffState.DEVELOPER, handlerId = "DeveloperA")
-  val test: State = State(progress = 0, taskState = 0, doer = StaffState.TESTER, handlerId = "TesterA")
+  def init(doer: Int, handlerId: String): State = State(0, 0, doer, handlerId)
 }
 
 /**

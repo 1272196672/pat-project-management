@@ -6,9 +6,9 @@ import akka.actor.typed.scaladsl.Behaviors
 import akka.cluster.typed.Cluster
 import akka.management.cluster.bootstrap.ClusterBootstrap
 import akka.management.scaladsl.AkkaManagement
-import com.pat.task.model.{DevCommand, TestCommand}
-import com.pat.task.route.TaskController
-import com.pat.task.service.{DeveloperTaskActor, TesterTaskActor}
+import com.pat.task.model.{DevCommand, LoginCommand, TestCommand}
+import com.pat.task.route.LoginController
+import com.pat.task.service.{DeveloperTaskActor, LoginActor, TesterTaskActor}
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.language.postfixOps
@@ -24,9 +24,16 @@ object Guardian {
 
       val httpHost = context.system.settings.config.getString("akka.http.host")
       val httpPort = context.system.settings.config.getInt("akka.http.port")
+      /*
       val developerTaskActor: ActorRef[DevCommand] = context.spawn(Behaviors.supervise(DeveloperTaskActor()).onFailure(SupervisorStrategy.restart), "developerTaskActor", MailboxSelector.defaultMailbox())
       val testerTaskActor: ActorRef[TestCommand] = context.spawn(Behaviors.supervise(TesterTaskActor()).onFailure(SupervisorStrategy.restart), "testerTaskActor", MailboxSelector.defaultMailbox())
+       */
+      val loginActor: ActorRef[LoginCommand] = context.spawn(Behaviors.supervise(LoginActor()).onFailure(SupervisorStrategy.restart), "testerTaskActor", MailboxSelector.defaultMailbox())
+      /*
       WebServer.start(httpHost, httpPort, TaskController(developerTaskActor, testerTaskActor).route)
+       */
+      val routes = LoginController(loginActor).route
+      WebServer.start(httpHost, httpPort, routes)
 
       AkkaManagement(context.system).start
       ClusterBootstrap.get(system).start()
