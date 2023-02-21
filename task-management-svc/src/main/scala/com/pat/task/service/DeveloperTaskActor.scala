@@ -18,7 +18,7 @@ object DeveloperTaskActor {
       val scheduler: Scheduler = context.system.scheduler
       EventSourcedBehavior[DevCommand, Event, State](
         PersistenceId("DeveloperTaskActor", staffId),
-        State.init(StaffState.DEVELOPER, staffId),
+        State.empty,
         (state, command) =>
           if (state.taskState == TaskState.DELIVERED) haveNoRightToModify(state, command)
           else openTask(staffId, state, command, scheduler),
@@ -37,21 +37,26 @@ object DeveloperTaskActor {
     implicit val scheduler1: Scheduler = scheduler
 
     command match {
-      case UpdateProgressCommand(progress, replyTo) =>
+      case GetTaskCommand(taskId, replyTo) =>
+        Effect
+          .persist(TaskGottenEvent(staffId, taskId))
+          .thenRun(showTask => replyTo ! SuccessResponse(showTask.toSummary))
+
+      case UpdateProgressCommand(taskId, progress, replyTo) =>
         Effect
           .persist(
             if (progress == 1)
-              TaskCompletedEvent(staffId, state.doer)
+              TaskCompletedEvent(staffId, taskId, state.doer)
             else
-              ProgressUpdatedEvent(staffId, progress, TaskState.PROCESSING, state.doer)
+              ProgressUpdatedEvent(staffId, taskId, progress, TaskState.PROCESSING, StaffState.DEVELOPER)
           )
           .thenRun(updateProgress => replyTo ! SuccessResponse(updateProgress.toSummary))
 
-      case Send2TestCommand(testerId, replyTo, replyToTest) =>
+      case Send2TestCommand(taskId, testerId, replyTo, replyToTest) =>
         if (state.taskState == TaskState.COMPLETED) {
           Effect
-            .persist(Sent2TestEvent(staffId, testerId))
-            .thenRun(_ => replyToTest ! ReceiveFromDevCommand(testerId, replyTo))
+            .persist(Sent2TestEvent(staffId, taskId, testerId))
+            .thenRun(_ => replyToTest ! ReceiveFromDevCommand(taskId, testerId, replyTo))
           /*
           .thenRun(_ => {
             val future = replyToTest ? (ref => ReceiveFromDevCommand(ref))
@@ -66,7 +71,7 @@ object DeveloperTaskActor {
           Effect.none
         }
 
-      case ShowProgressCommand(replyTo) =>
+      case ShowProgressCommand(taskId, replyTo) =>
         replyTo ! SuccessResponse(state.toSummary)
         Effect.none
 
@@ -77,15 +82,15 @@ object DeveloperTaskActor {
   // 没有权限操作
   private def haveNoRightToModify(state: State, command: DevCommand): Effect[Event, State] = {
     command match {
-      case UpdateProgressCommand(_, replyTo) =>
+      case UpdateProgressCommand(taskId, _, replyTo) =>
         replyTo ! ErrorResponse("NO RIGHT!")
         Effect.none
 
-      case ShowProgressCommand(replyTo) =>
+      case ShowProgressCommand(taskId, replyTo) =>
         replyTo ! SuccessResponse(state.toSummary)
         Effect.none
 
-      case Send2TestCommand(_, replyTo, _) =>
+      case Send2TestCommand(taskId, _, replyTo, _) =>
         replyTo ! ErrorResponse("NO RIGHT!")
         Effect.none
 
@@ -97,11 +102,13 @@ object DeveloperTaskActor {
   // 处理事件
   private def handleEvent(state: State, event: Event): State = {
     event match {
-      case ProgressUpdatedEvent(staffId, progress, taskState, doer) => state.updateProgress(progress, taskState, state.handlerId)
+      case TaskGottenEvent(staffId, taskId) => state.updateProgress(taskId, 0, TaskState.UN_STARTED, StaffState.DEVELOPER, staffId)
 
-      case TaskCompletedEvent(staffId, doer) => state.completeTask
+      case ProgressUpdatedEvent(staffId, taskId, progress, taskState, doer) => state.updateProgress(taskId, progress, taskState, doer, staffId)
 
-      case Sent2TestEvent(staffId, testerId) => state.deliverTask
+      case TaskCompletedEvent(staffId, taskId, doer) => state.completeTask
+
+      case Sent2TestEvent(staffId, taskId, testerId) => state.deliverTask
     }
   }
 }

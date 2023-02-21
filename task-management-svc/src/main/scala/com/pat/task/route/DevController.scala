@@ -5,7 +5,7 @@ import akka.actor.typed.{ActorRef, ActorSystem, Scheduler}
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.util.Timeout
-import com.pat.task.model.{DevCommand, Send2TestCommand, ShowProgressCommand, TestCommand, UpdateProgressCommand}
+import com.pat.task.model.{DevCommand, GetTaskCommand, Send2TestCommand, ShowProgressCommand, TestCommand, UpdateProgressCommand}
 import com.pat.task.service.TesterTaskActor
 import com.pat.task.util.NormalizationUtils
 import de.heikoseeberger.akkahttpjackson.JacksonSupport
@@ -24,16 +24,19 @@ class DevController(developerTaskActor: ActorRef[DevCommand])(implicit system: A
 
   def route: Route = {
     get {
-      pathPrefix("dev" / "task") {
+      pathPrefix("dev" / "task" / Segment) { taskId =>
         pathEndOrSingleSlash {
-          complete(developerTaskActor ? (ref => ShowProgressCommand(ref)))
+          complete(developerTaskActor ? (ref => ShowProgressCommand(taskId, ref)))
+        } ~
+        path("getTask") {
+          complete(developerTaskActor ? (ref => GetTaskCommand(taskId, ref)))
         } ~
         path(DoubleNumber) { progress =>
-          complete(developerTaskActor ? (ref => UpdateProgressCommand(NormalizationUtils.normalizeProgress(progress), ref)))
+          complete(developerTaskActor ? (ref => UpdateProgressCommand(taskId, NormalizationUtils.normalizeProgress(progress), ref)))
         } ~
         path("send2test" / Segment) { testerId =>
           val testerTaskActor = system.systemActorOf(TesterTaskActor(testerId), s"TesterTaskActor-$testerId")
-          complete(developerTaskActor ? (ref => Send2TestCommand(testerId, ref, testerTaskActor)))
+          complete(developerTaskActor ? (ref => Send2TestCommand(taskId, testerId, ref, testerTaskActor)))
         }
       }
     }

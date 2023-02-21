@@ -1,15 +1,15 @@
 package com.pat.task.model
 
-final case class State(progress: Double, taskState: Int, doer: Int, handlerId: String) extends CborSerializable {
-  def updateProgress(progress: Double, taskState: Int, handlerId: String): State = copy(progress, taskState, handlerId = handlerId)
-  def completeTask: State = copy(1, TaskState.COMPLETED, StaffState.DEVELOPER, handlerId)
-  def deliverTask: State = copy(1, TaskState.DELIVERED, StaffState.DEVELOPER, handlerId)
-  def toSummary: Summary = Summary(progress, taskState, doer, handlerId)
+final case class State(taskId: String, progress: Double, taskState: Int, doer: Int, handlerId: String) extends CborSerializable {
+  def updateProgress(taskId: String, progress: Double, taskState: Int, doer: Int, handlerId: String): State = copy(taskId, progress, taskState, doer, handlerId)
+  def completeTask: State = copy(taskId, 1, TaskState.COMPLETED, StaffState.DEVELOPER, handlerId)
+  def deliverTask: State = copy(taskId, 1, TaskState.DELIVERED, StaffState.DEVELOPER, handlerId)
+  def toSummary: Summary = Summary(taskId, progress, taskState, doer, handlerId)
 }
 
 object State {
-  val empty: State = State(progress = 0, taskState = 0, doer = 0, handlerId = "")
-  def init(doer: Int, handlerId: String): State = State(0, 0, doer, handlerId)
+  val empty: State = State("", progress = 0, taskState = 0, doer = 0, handlerId = "")
+  def init(taskId: String, doer: Int, handlerId: String): State = State(taskId, 0, 0, doer, handlerId)
 }
 
 /**

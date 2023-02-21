@@ -23,9 +23,9 @@ class TesterController(testerTaskActor: ActorRef[TestCommand])(implicit system: 
 
   def route: Route = {
     get {
-      pathPrefix("test" / "task") {
+      pathPrefix("test" / "task" / Segment) { taskId =>
         pathEndOrSingleSlash {
-          complete(testerTaskActor ? (ref => ShowProgressCommand(ref)))
+          complete(testerTaskActor ? (ref => ShowProgressCommand(taskId, ref)))
         }
       }
     }

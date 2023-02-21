@@ -4,7 +4,7 @@ import akka.http.scaladsl.model.DateTime
 
 trait Entity extends CborSerializable
 
-final case class Summary(progress: Double, taskState: Int, doer: Int, handlerId: String) extends CborSerializable
+final case class Summary(taskId: String, progress: Double, taskState: Int, doer: Int, handlerId: String) extends CborSerializable
 
 final case class StaffInfo(staffId: String, staffState: Int) extends CborSerializable
 
