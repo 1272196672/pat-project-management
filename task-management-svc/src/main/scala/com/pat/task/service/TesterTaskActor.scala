@@ -5,6 +5,7 @@ import akka.actor.typed.{Behavior, SupervisorStrategy}
 import akka.persistence.typed.PersistenceId
 import akka.persistence.typed.scaladsl.{Effect, EventSourcedBehavior, RetentionCriteria}
 import cn.hutool.core.util.IdUtil
+import com.pat.task.dao.DatabaseService
 import com.pat.task.model._
 
 import scala.concurrent.duration.DurationInt
@@ -12,7 +13,7 @@ import scala.language.postfixOps
 
 
 object TesterTaskActor {
-  def apply(staffId: String): Behavior[TestCommand] = {
+  def apply(staffId: String)(databaseService: DatabaseService): Behavior[TestCommand] = {
     Behaviors.setup[TestCommand] { context =>
       EventSourcedBehavior[TestCommand, Event, State](
         PersistenceId("TesterTaskActor", staffId),

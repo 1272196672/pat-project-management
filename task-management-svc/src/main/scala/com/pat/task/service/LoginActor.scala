@@ -3,11 +3,12 @@ package com.pat.task.service
 import akka.actor.typed.{ActorRef, ActorSystem, Behavior, MailboxSelector, SupervisorStrategy}
 import akka.actor.typed.scaladsl.Behaviors
 import com.pat.task.WebServer
+import com.pat.task.dao.DatabaseService
 import com.pat.task.model.{Command, LoginCommand, StaffInfo, StaffState, SuccessResponse}
 import com.pat.task.route.{DevController, LoginController, TesterController}
 
 object LoginActor {
-  def apply(): Behavior[LoginCommand] = {
+  def apply(databaseService: DatabaseService): Behavior[LoginCommand] = {
     Behaviors.setup { context =>
       implicit val system: ActorSystem[Nothing] = context.system
       Behaviors.receiveMessage {
@@ -17,15 +18,15 @@ object LoginActor {
           staffState match {
             case StaffState.DEVELOPER =>
               val developerTaskActor = context.spawn(
-                Behaviors.supervise(DeveloperTaskActor(staffId)).onFailure(SupervisorStrategy.restart),
+                Behaviors.supervise(DeveloperTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
                 s"DeveloperTaskActor-$staffId"
               )
               val port = system.settings.config.getInt("akka.http.staff.developer-port")
-              WebServer.start(host, port, DevController(developerTaskActor).route)
+              WebServer.start(host, port, DevController(developerTaskActor)(databaseService).route)
 
             case StaffState.TESTER =>
               val testerTaskActor = context.spawn(
-                Behaviors.supervise(TesterTaskActor(staffId)).onFailure(SupervisorStrategy.restart),
+                Behaviors.supervise(TesterTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
                 s"TesterTaskActor-$staffId"
               )
               val port = system.settings.config.getInt("akka.http.staff.tester-port")

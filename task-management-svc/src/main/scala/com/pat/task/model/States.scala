@@ -5,6 +5,7 @@ final case class State(taskId: String, progress: Double, taskState: Int, doer: I
   def completeTask: State = copy(taskId, 1, TaskState.COMPLETED, StaffState.DEVELOPER, handlerId)
   def deliverTask: State = copy(taskId, 1, TaskState.DELIVERED, StaffState.DEVELOPER, handlerId)
   def toSummary: Summary = Summary(taskId, progress, taskState, doer, handlerId)
+  def toTask: Task = Task(taskId, progress, taskState, doer, handlerId)
 }
 
 object State {
