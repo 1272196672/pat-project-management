@@ -13,25 +13,25 @@ object LoginActor {
       implicit val system: ActorSystem[Nothing] = context.system
       Behaviors.receiveMessage {
         case LoginCommand(staffId, staffState, replyTo) =>
-          replyTo ! SuccessResponse(StaffInfo(staffId, staffState))
           val host = system.settings.config.getString("akka.http.host")
           staffState match {
             case StaffState.DEVELOPER =>
               val developerTaskActor = context.spawn(
-                Behaviors.supervise(DeveloperTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
-                s"DeveloperTaskActor-$staffId"
+                  Behaviors.supervise(DeveloperTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
+              s"DeveloperTaskActor-$staffId"
               )
               val port = system.settings.config.getInt("akka.http.staff.developer-port")
               WebServer.start(host, port, DevController(developerTaskActor)(databaseService).route)
 
             case StaffState.TESTER =>
               val testerTaskActor = context.spawn(
-                Behaviors.supervise(TesterTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
-                s"TesterTaskActor-$staffId"
+                  Behaviors.supervise(TesterTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
+              s"TesterTaskActor-$staffId"
               )
               val port = system.settings.config.getInt("akka.http.staff.tester-port")
               WebServer.start(host, port, TesterController(testerTaskActor).route)
           }
+          replyTo ! SuccessResponse(StaffInfo(staffId, staffState))
           Behaviors.same
       }
     }
