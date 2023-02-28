@@ -8,7 +8,7 @@ import akka.http.scaladsl.server.Route
 import akka.util.Timeout
 import com.pat.task.dao.DatabaseService
 import com.pat.task.model.{DevCommand, GetTaskCommand, Send2TestCommand, ShowProgressCommand, TestCommand, UpdateProgressCommand}
-import com.pat.task.service.TesterTaskActor
+import com.pat.task.service.{LoginActor, TesterTaskActor}
 import com.pat.task.util.NormalizationUtils
 import de.heikoseeberger.akkahttpjackson.JacksonSupport
 
@@ -37,7 +37,13 @@ class DevController(developerTaskActor: ActorRef[DevCommand])(databaseService: D
           complete(developerTaskActor ? (ref => UpdateProgressCommand(taskId, NormalizationUtils.normalizeProgress(progress), ref)))
         } ~
         path("send2test" / Segment) { testerId =>
-          val testerTaskActor = system.systemActorOf(TesterTaskActor(testerId)(databaseService), s"TesterTaskActor-$testerId")
+          var testerTaskActor: ActorRef[TestCommand] = null
+          try {
+            testerTaskActor = system.systemActorOf(TesterTaskActor(testerId)(databaseService), s"TesterTaskActor-$testerId")
+          } catch {
+            case _: Exception =>
+              testerTaskActor = LoginActor.testerTaskActor
+          }
           complete(developerTaskActor ? (ref => Send2TestCommand(taskId, testerId, ref, testerTaskActor)))
         }
       }

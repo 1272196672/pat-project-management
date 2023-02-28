@@ -4,10 +4,13 @@ import akka.actor.typed.{ActorRef, ActorSystem, Behavior, MailboxSelector, Super
 import akka.actor.typed.scaladsl.Behaviors
 import com.pat.task.WebServer
 import com.pat.task.dao.DatabaseService
-import com.pat.task.model.{Command, LoginCommand, StaffInfo, StaffState, SuccessResponse}
+import com.pat.task.model.{Command, DevCommand, LoginCommand, StaffInfo, StaffState, SuccessResponse, TestCommand}
 import com.pat.task.route.{DevController, LoginController, TesterController}
 
 object LoginActor {
+  var testerTaskActor: ActorRef[TestCommand] = null
+  var developerTaskActor: ActorRef[DevCommand] = null
+
   def apply(databaseService: DatabaseService): Behavior[LoginCommand] = {
     Behaviors.setup { context =>
       implicit val system: ActorSystem[Nothing] = context.system
@@ -16,7 +19,7 @@ object LoginActor {
           val host = system.settings.config.getString("akka.http.host")
           staffState match {
             case StaffState.DEVELOPER =>
-              val developerTaskActor = context.spawn(
+              developerTaskActor = context.spawn(
                   Behaviors.supervise(DeveloperTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
               s"DeveloperTaskActor-$staffId"
               )
@@ -24,7 +27,7 @@ object LoginActor {
               WebServer.start(host, port, DevController(developerTaskActor)(databaseService).route)
 
             case StaffState.TESTER =>
-              val testerTaskActor = context.spawn(
+              testerTaskActor = context.spawn(
                   Behaviors.supervise(TesterTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
               s"TesterTaskActor-$staffId"
               )

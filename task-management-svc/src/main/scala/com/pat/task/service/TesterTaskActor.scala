@@ -29,9 +29,10 @@ object TesterTaskActor {
   def openTask(staffId: String, state: State, command: TestCommand): Effect[Event, State] = {
     command match {
       case ReceiveFromDevCommand(taskId, testerId, replyTo) =>
+        replyTo ! SuccessResponse("GOT IT")
         Effect
           .persist(ReceiveFromDevEvent(staffId, taskId, testerId))
-          .thenRun(ref => replyTo ! SuccessResponse(ref.toSummary))
+          .thenStop()
       case ShowProgressCommand(taskId, replyTo) =>
         replyTo ! SuccessResponse(state.toSummary)
         Effect.none
