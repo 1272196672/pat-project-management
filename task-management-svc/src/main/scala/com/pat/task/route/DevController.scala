@@ -43,6 +43,8 @@ class DevController(developerTaskActor: ActorRef[DevCommand])(databaseService: D
           } catch {
             case _: Exception =>
               testerTaskActor = LoginActor.testerTaskActor
+              system.log.error(testerTaskActor + " already exist!")
+              complete(developerTaskActor ? (ref => Send2TestCommand(taskId, testerId, ref, testerTaskActor)))
           }
           complete(developerTaskActor ? (ref => Send2TestCommand(taskId, testerId, ref, testerTaskActor)))
         }

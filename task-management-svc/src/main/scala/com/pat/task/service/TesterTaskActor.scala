@@ -17,7 +17,7 @@ object TesterTaskActor {
     Behaviors.setup[TestCommand] { context =>
       EventSourcedBehavior[TestCommand, Event, State](
         PersistenceId("TesterTaskActor", staffId),
-        State.empty,
+        State.init("", StaffState.TESTER, staffId),
         (state, command) => openTask(staffId, state, command),
         (state, event) => handleEvent(state, event)
       )
@@ -29,13 +29,18 @@ object TesterTaskActor {
   def openTask(staffId: String, state: State, command: TestCommand): Effect[Event, State] = {
     command match {
       case ReceiveFromDevCommand(taskId, testerId, replyTo) =>
-        replyTo ! SuccessResponse("GOT IT")
         Effect
           .persist(ReceiveFromDevEvent(staffId, taskId, testerId))
-          .thenStop()
+          .thenReply(replyTo)(rep => SuccessResponse(rep.toSummary, msg = "GOI IT"))
       case ShowProgressCommand(taskId, replyTo) =>
-        replyTo ! SuccessResponse(state.toSummary)
-        Effect.none
+        if (taskId != state.taskId) {
+          Effect
+            .reply(replyTo)(ErrorResponse(s"PLZ switch to $taskId"))
+        } else {
+          replyTo ! SuccessResponse(state.toSummary)
+          Effect.none
+        }
+
     }
   }
 

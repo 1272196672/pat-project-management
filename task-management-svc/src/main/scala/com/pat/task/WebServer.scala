@@ -2,19 +2,23 @@ package com.pat.task
 
 import akka.actor.typed.ActorSystem
 import akka.http.scaladsl.Http
+import akka.http.scaladsl.Http.ServerBinding
 import akka.http.scaladsl.server.Route
 
-import scala.concurrent.ExecutionContextExecutor
+import java.net.InetSocketAddress
+import scala.concurrent.{Await, ExecutionContextExecutor, Future}
 import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 import scala.util._
 
 object WebServer {
+  var binding: Future[ServerBinding] = null
   def start(httpHost: String, httpPort: Int, routes: Route)(implicit system: ActorSystem[_]): Unit = {
     implicit val executionContext: ExecutionContextExecutor = system.executionContext
-    Http()(system)
+    val binding = Http()(system)
       .newServerAt(httpHost, httpPort)
       .bind(routes)
+    binding
       .map(_.addToCoordinatedShutdown(3 seconds)(system))
       .onComplete {
         case Success(binding) =>
@@ -24,5 +28,10 @@ object WebServer {
           system.log.error("Failed to bind HTTP endpoint, terminating system", ex)
           system.terminate()
       }
+  }
+
+  def stop(implicit system: ActorSystem[_]): Unit = {
+    Await.result(binding, 5 seconds).terminate(3 seconds)
+    system.log.info(s"WebServer terminate!")
   }
 }

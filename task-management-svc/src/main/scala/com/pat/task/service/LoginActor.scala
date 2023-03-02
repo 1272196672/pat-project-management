@@ -19,19 +19,37 @@ object LoginActor {
           val host = system.settings.config.getString("akka.http.host")
           staffState match {
             case StaffState.DEVELOPER =>
-              developerTaskActor = context.spawn(
-                  Behaviors.supervise(DeveloperTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
-              s"DeveloperTaskActor-$staffId"
-              )
               val port = system.settings.config.getInt("akka.http.staff.developer-port")
+              try {
+                developerTaskActor = context.spawn(
+                  Behaviors.supervise(DeveloperTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.stop),
+                  s"DeveloperTaskActor-$staffId"
+                )
+              } catch {
+                case e: Exception =>
+                  system.log.error(s"${e}")
+                  WebServer.stop
+                  WebServer.start(host, port, DevController(developerTaskActor)(databaseService).route)
+                  replyTo ! SuccessResponse(StaffInfo(staffId, staffState))
+                  Behaviors.same
+              }
               WebServer.start(host, port, DevController(developerTaskActor)(databaseService).route)
 
             case StaffState.TESTER =>
-              testerTaskActor = context.spawn(
-                  Behaviors.supervise(TesterTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.restart),
-              s"TesterTaskActor-$staffId"
-              )
               val port = system.settings.config.getInt("akka.http.staff.tester-port")
+              try {
+                testerTaskActor = context.spawn(
+                  Behaviors.supervise(TesterTaskActor(staffId)(databaseService)).onFailure(SupervisorStrategy.stop),
+                  s"TesterTaskActor-$staffId"
+                )
+              } catch {
+                case e: Exception =>
+                  system.log.error(s"${e}")
+                  WebServer.stop
+                  WebServer.start(host, port, TesterController(testerTaskActor).route)
+                  replyTo ! SuccessResponse(StaffInfo(staffId, staffState))
+                  Behaviors.same
+              }
               WebServer.start(host, port, TesterController(testerTaskActor).route)
           }
           replyTo ! SuccessResponse(StaffInfo(staffId, staffState))

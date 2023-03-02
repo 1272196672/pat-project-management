@@ -22,9 +22,9 @@ object DeveloperTaskActor {
       implicit val executionContext: ExecutionContextExecutor = context.executionContext
       EventSourcedBehavior[DevCommand, Event, State](
         PersistenceId("DeveloperTaskActor", staffId),
-        State.empty,
+        State.init("", StaffState.DEVELOPER, staffId),
         (state, command) =>
-          if (state.taskState == TaskState.DELIVERED) haveNoRightToModify(state, command)
+          if (state.taskState == TaskState.DELIVERED) haveNoRightToModify(staffId, state, command, TaskDao(databaseService))
           else openTask(staffId, state, command, scheduler, TaskDao(databaseService)),
         (state, event) => handleEvent(state, event)
       )
@@ -50,64 +50,75 @@ object DeveloperTaskActor {
           }
 
       case UpdateProgressCommand(taskId, progress, replyTo) =>
-        Effect
-          .persist(
-            if (progress == 1)
-              TaskCompletedEvent(staffId, taskId, state.doer)
-            else
-              ProgressUpdatedEvent(staffId, taskId, progress, TaskState.PROCESSING, StaffState.DEVELOPER)
-          )
-          .thenRun { showTask =>
-            replyTo ! SuccessResponse(showTask.toSummary)
-            taskDao.updateTaskById(taskId, showTask.toTask)
-          }
-
-      case Send2TestCommand(taskId, testerId, replyTo, replyToTest) =>
-        if (state.taskState == TaskState.COMPLETED) {
+        if (taskId != state.taskId) {
+          Effect.reply(replyTo)(ErrorResponse(s"PLZ switch to task: $taskId"))
+        } else {
           Effect
-            .persist(Sent2TestEvent(staffId, taskId, testerId))
-            .thenRun{ showTask =>
-              replyToTest ! ReceiveFromDevCommand(taskId, testerId, replyTo)
+            .persist(
+              if (progress == 1)
+                TaskCompletedEvent(staffId, taskId, state.doer)
+              else
+                ProgressUpdatedEvent(staffId, taskId, progress, TaskState.PROCESSING, StaffState.DEVELOPER)
+            )
+            .thenRun { showTask =>
+              replyTo ! SuccessResponse(showTask.toSummary)
               taskDao.updateTaskById(taskId, showTask.toTask)
             }
-          /*
-          .thenRun(_ => {
-            val future = replyToTest ? (ref => ReceiveFromDevCommand(ref))
-            val response = Await.result(future, 2 seconds)
-            println(1)
-            replyTo ! response
-          })
-
-           */
-        } else {
-          replyTo ! ErrorResponse("TASK NOT COMPLETED!")
-          Effect.none
         }
 
-      case ShowProgressCommand(taskId, replyTo) =>
-        replyTo ! SuccessResponse(state.toSummary)
-        Effect.none
+      case Send2TestCommand(taskId, testerId, replyTo, replyToTest) =>
+        if (taskId != state.taskId) {
+          Effect.reply(replyTo)(ErrorResponse(s"PLZ switch to task: $taskId"))
+        } else {
+          if (state.taskState == TaskState.COMPLETED) {
+            Effect
+              .persist(Sent2TestEvent(staffId, taskId, testerId))
+              .thenRun { showTask =>
+                replyToTest ! ReceiveFromDevCommand(taskId, testerId, replyTo)
+                taskDao.updateTaskById(taskId, showTask.toTask)
+              }
+          } else {
+            replyTo ! ErrorResponse("TASK NOT COMPLETED!")
+            Effect.none
+          }
+        }
 
-      case _ => Effect.none
+
+      case ShowProgressCommand(taskId, replyTo) =>
+        if (taskId != state.taskId) {
+          Effect.reply(replyTo)(ErrorResponse(s"PLZ switch to task: $taskId"))
+        } else {
+          replyTo ! SuccessResponse(state.toSummary)
+          Effect.none
+        }
     }
   }
 
   // 没有权限操作
-  private def haveNoRightToModify(state: State, command: DevCommand): Effect[Event, State] = {
+  private def haveNoRightToModify(staffId: String, state: State, command: DevCommand, taskDao: TaskDao): Effect[Event, State] = {
     command match {
+      case GetTaskCommand(taskId, replyTo) =>
+        Effect
+          .persist(TaskGottenEvent(staffId, taskId))
+          .thenRun { showTask =>
+            replyTo ! SuccessResponse(showTask.toSummary)
+            taskDao.createTask(showTask.toTask)
+          }
+
       case UpdateProgressCommand(taskId, _, replyTo) =>
         replyTo ! ErrorResponse("NO RIGHT!")
         Effect.none
 
       case ShowProgressCommand(taskId, replyTo) =>
-        replyTo ! SuccessResponse(state.toSummary)
-        Effect.none
+        if (taskId != state.taskId) {
+          Effect.reply(replyTo)(ErrorResponse(s"PLZ switch to task: $taskId"))
+        } else {
+          replyTo ! SuccessResponse(state.toSummary)
+          Effect.none
+        }
 
       case Send2TestCommand(taskId, _, replyTo, _) =>
         replyTo ! ErrorResponse("NO RIGHT!")
-        Effect.none
-
-      case _ =>
         Effect.none
     }
   }
@@ -115,7 +126,7 @@ object DeveloperTaskActor {
   // 处理事件
   private def handleEvent(state: State, event: Event): State = {
     event match {
-      case TaskGottenEvent(staffId, taskId) =>  state.updateProgress(taskId, 0, TaskState.UN_STARTED, StaffState.DEVELOPER, staffId)
+      case TaskGottenEvent(staffId, taskId) => state.updateProgress(taskId, 0, TaskState.UN_STARTED, StaffState.DEVELOPER, staffId)
 
       case ProgressUpdatedEvent(staffId, taskId, progress, taskState, doer) => state.updateProgress(taskId, progress, taskState, doer, staffId)
 
